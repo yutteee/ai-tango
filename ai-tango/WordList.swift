@@ -15,8 +15,17 @@ struct WordList: View {
     
     
     var body: some View {
-        List(words) { word in
-            WordRow(word: word)
+        NavigationSplitView {
+            List(words) { word in
+                NavigationLink {
+                    WordDetail(word: word)
+                } label: {
+                    WordRow(word: word)
+                }
+            }
+            .navigationTitle("単語一覧")
+        } detail : {
+            Text("単語を選択")
         }
     }
 }

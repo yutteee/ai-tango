@@ -15,6 +15,7 @@
 		1678C67F2C1466930096CD8A /* word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C67E2C1466930096CD8A /* word.swift */; };
 		1678C6812C1468320096CD8A /* WordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C6802C1468320096CD8A /* WordRow.swift */; };
 		1678C6832C149B5C0096CD8A /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C6822C149B5C0096CD8A /* WordList.swift */; };
+		1678C6852C149D5F0096CD8A /* WordDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C6842C149D5F0096CD8A /* WordDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		1678C67E2C1466930096CD8A /* word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word.swift; sourceTree = "<group>"; };
 		1678C6802C1468320096CD8A /* WordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRow.swift; sourceTree = "<group>"; };
 		1678C6822C149B5C0096CD8A /* WordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
+		1678C6842C149D5F0096CD8A /* WordDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				1678C67E2C1466930096CD8A /* word.swift */,
 				1678C6802C1468320096CD8A /* WordRow.swift */,
 				1678C6822C149B5C0096CD8A /* WordList.swift */,
+				1678C6842C149D5F0096CD8A /* WordDetail.swift */,
 				1678C6722C1460F60096CD8A /* Item.swift */,
 				1678C6742C1460F70096CD8A /* Assets.xcassets */,
 				1678C6762C1460F70096CD8A /* Preview Content */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1678C6852C149D5F0096CD8A /* WordDetail.swift in Sources */,
 				1678C6812C1468320096CD8A /* WordRow.swift in Sources */,
 				1678C6712C1460F60096CD8A /* ContentView.swift in Sources */,
 				1678C67F2C1466930096CD8A /* word.swift in Sources */,
