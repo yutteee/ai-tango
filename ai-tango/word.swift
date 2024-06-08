@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct Word:Codable {
+    let id: Int
+    let english: String
+    let japanese: String
+    let example_english: String
+    let example_japanese: String
+}

@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct WordRow: View {
+    var word: Word
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text(word.english)
+            Spacer()
+            Text(word.japanese)
+        }
+        .padding()
     }
 }
 
 #Preview {
-    WordRow()
+    Group {
+        WordRow(word: Word(id: 1, english: "apple", japanese: "りんご", example_english: "This is an apple", example_japanese: "これはりんごです"))
+        WordRow(word: Word(id: 2, english: "banana", japanese: "バナナ", example_english: "This is a banana", example_japanese: "これはバナナです"))
+    }
 }
