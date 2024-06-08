@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Word:Codable {
+struct Word:Codable, Identifiable{
     let id: Int
     let english: String
     let japanese: String
