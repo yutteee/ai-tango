@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WordRow: View {
-    var word: Word
+    let word: Word
     
     var body: some View {
         HStack {
@@ -21,8 +21,5 @@ struct WordRow: View {
 }
 
 #Preview {
-    Group {
-        WordRow(word: Word(id: 1, english: "apple", japanese: "りんご", example_english: "This is an apple", example_japanese: "これはりんごです"))
-        WordRow(word: Word(id: 2, english: "banana", japanese: "バナナ", example_english: "This is a banana", example_japanese: "これはバナナです"))
-    }
+    WordRow(word: SampleData.shared.word)
 }

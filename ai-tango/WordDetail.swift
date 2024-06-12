@@ -44,5 +44,5 @@ struct WordDetail: View {
 }
 
 #Preview {
-    WordDetail(word: Word(id: 1, english: "apple", japanese: "りんご", example_english: "This is an apple", example_japanese: "これはりんごです"))
+    WordDetail(word: SampleData.shared.word)
 }

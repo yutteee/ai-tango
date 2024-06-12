@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddWord: View {
+    @Environment(\.modelContext) var context
+    
     @State private var english = ""
     @State private var japanese = ""
     
@@ -24,7 +27,7 @@ struct AddWord: View {
         .padding()
         
         Button(action: {
-            print("単語を追加")
+            context.insert(Word(english: english, japanese: japanese, example_english: "", example_japanese: ""))
         }) {
             Label("単語を追加", systemImage: "plus")
                 .font(.headline)
@@ -34,4 +37,5 @@ struct AddWord: View {
 
 #Preview {
     AddWord()
+        .modelContainer(for: Word.self, inMemory: true)
 }

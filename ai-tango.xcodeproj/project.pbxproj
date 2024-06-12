@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		162DA6362C19EC22001DB984 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162DA6352C19EC22001DB984 /* SampleData.swift */; };
 		1678C66F2C1460F60096CD8A /* ai_tangoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C66E2C1460F60096CD8A /* ai_tangoApp.swift */; };
 		1678C6712C1460F60096CD8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C6702C1460F60096CD8A /* ContentView.swift */; };
 		1678C6732C1460F60096CD8A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C6722C1460F60096CD8A /* Item.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		162DA6352C19EC22001DB984 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		1678C66B2C1460F60096CD8A /* ai-tango.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ai-tango.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1678C66E2C1460F60096CD8A /* ai_tangoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ai_tangoApp.swift; sourceTree = "<group>"; };
 		1678C6702C1460F60096CD8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				1678C6702C1460F60096CD8A /* ContentView.swift */,
 				1678C67E2C1466930096CD8A /* word.swift */,
 				1678C6802C1468320096CD8A /* WordRow.swift */,
+				162DA6352C19EC22001DB984 /* SampleData.swift */,
 				1678C6822C149B5C0096CD8A /* WordList.swift */,
 				1678C6862C15D6FB0096CD8A /* AddWord.swift */,
 				1678C6842C149D5F0096CD8A /* WordDetail.swift */,
@@ -162,6 +165,7 @@
 				1678C6732C1460F60096CD8A /* Item.swift in Sources */,
 				1678C6872C15D6FB0096CD8A /* AddWord.swift in Sources */,
 				1678C66F2C1460F60096CD8A /* ai_tangoApp.swift in Sources */,
+				162DA6362C19EC22001DB984 /* SampleData.swift in Sources */,
 				1678C6832C149B5C0096CD8A /* WordList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

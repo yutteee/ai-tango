@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct WordList: View {
-    @State private var words: [Word] = [
-        Word(id: 1, english: "apple", japanese: "りんご", example_english: "This is an apple", example_japanese: "これはりんごです"),
-        Word(id: 2, english: "banana", japanese: "バナナ", example_english: "This is a banana", example_japanese: "これはバナナです")
-    ]
-    
+    var words: [Word]
     @State private var isShowSheet = false
     
     
@@ -27,7 +23,6 @@ struct WordList: View {
             }
             .navigationTitle("単語一覧")
             
-//            ボタンを押したらaddWordがハーフモーダルで表示される
             Button(action: {
                 isShowSheet.toggle()
             }) {
@@ -51,5 +46,5 @@ struct WordList: View {
 }
 
 #Preview {
-    WordList()
+    WordList(words: SampleData.shared.words)
 }
