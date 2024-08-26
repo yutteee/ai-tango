@@ -6,22 +6,33 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct WordList: View {
-    var words: [Word]
+    @Environment(\.modelContext) private var modelContext
+    @Query private var words: [Word]
+    
     @State private var isShowSheet = false
     
     
     var body: some View {
         NavigationSplitView {
-            List(words) { word in
-                NavigationLink {
-                    WordDetail(word: word)
-                } label: {
-                    WordRow(word: word)
+            List{
+                ForEach(words) { word in
+                    NavigationLink {
+                        WordDetail(word: word)
+                    } label: {
+                        WordRow(word: word)
+                    }
                 }
+                .onDelete(perform: deleteItems)
             }
             .navigationTitle("単語一覧")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+            }
             
             Button(action: {
                 isShowSheet.toggle()
@@ -32,19 +43,24 @@ struct WordList: View {
             .sheet(isPresented: $isShowSheet) {
                 AddWord()
                     .presentationDetents([
-                        .medium,
                         .large
                     ])
             }
-            
-            
-            
         } detail : {
             Text("単語を選択")
+        }
+    }
+    
+    private func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            for index in offsets {
+                modelContext.delete(words[index])
+            }
         }
     }
 }
 
 #Preview {
-    WordList(words: SampleData.shared.words)
+    WordList()
+        .modelContainer(SampleData.shared.modelContainer)
 }

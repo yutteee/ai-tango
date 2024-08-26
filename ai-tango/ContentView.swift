@@ -11,12 +11,12 @@ import SwiftData
 struct ContentView: View {
     @Query private var words: [Word]
     var body: some View {
-        WordList(words: words)
+        WordList()
     }
 }
 
 
 #Preview {
     ContentView()
-        .modelContainer(for: Word.self, inMemory: true)
+        .modelContainer(SampleData.shared.modelContainer)
 }

@@ -10,7 +10,6 @@
 		162DA6362C19EC22001DB984 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162DA6352C19EC22001DB984 /* SampleData.swift */; };
 		1678C66F2C1460F60096CD8A /* ai_tangoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C66E2C1460F60096CD8A /* ai_tangoApp.swift */; };
 		1678C6712C1460F60096CD8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C6702C1460F60096CD8A /* ContentView.swift */; };
-		1678C6732C1460F60096CD8A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C6722C1460F60096CD8A /* Item.swift */; };
 		1678C6752C1460F70096CD8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1678C6742C1460F70096CD8A /* Assets.xcassets */; };
 		1678C6782C1460F70096CD8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1678C6772C1460F70096CD8A /* Preview Assets.xcassets */; };
 		1678C67F2C1466930096CD8A /* word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C67E2C1466930096CD8A /* word.swift */; };
@@ -25,7 +24,6 @@
 		1678C66B2C1460F60096CD8A /* ai-tango.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ai-tango.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1678C66E2C1460F60096CD8A /* ai_tangoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ai_tangoApp.swift; sourceTree = "<group>"; };
 		1678C6702C1460F60096CD8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		1678C6722C1460F60096CD8A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1678C6742C1460F70096CD8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1678C6772C1460F70096CD8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1678C67E2C1466930096CD8A /* word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = word.swift; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 				1678C6822C149B5C0096CD8A /* WordList.swift */,
 				1678C6862C15D6FB0096CD8A /* AddWord.swift */,
 				1678C6842C149D5F0096CD8A /* WordDetail.swift */,
-				1678C6722C1460F60096CD8A /* Item.swift */,
 				1678C6742C1460F70096CD8A /* Assets.xcassets */,
 				1678C6762C1460F70096CD8A /* Preview Content */,
 			);
@@ -162,7 +159,6 @@
 				1678C6812C1468320096CD8A /* WordRow.swift in Sources */,
 				1678C6712C1460F60096CD8A /* ContentView.swift in Sources */,
 				1678C67F2C1466930096CD8A /* word.swift in Sources */,
-				1678C6732C1460F60096CD8A /* Item.swift in Sources */,
 				1678C6872C15D6FB0096CD8A /* AddWord.swift in Sources */,
 				1678C66F2C1460F60096CD8A /* ai_tangoApp.swift in Sources */,
 				162DA6362C19EC22001DB984 /* SampleData.swift in Sources */,
