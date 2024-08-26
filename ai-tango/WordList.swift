@@ -12,6 +12,7 @@ struct WordList: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var words: [Word]
     
+    @State private var newWord: Word?
     @State private var isShowSheet = false
     
     
@@ -34,17 +35,15 @@ struct WordList: View {
                 }
             }
             
-            Button(action: {
-                isShowSheet.toggle()
-            }) {
+            Button(action: addWord) {
                 Label("単語を追加", systemImage: "plus")
                     .font(.headline)
             }
-            .sheet(isPresented: $isShowSheet) {
-                AddWord()
-                    .presentationDetents([
-                        .large
-                    ])
+            .padding(.top)
+            .sheet(item: $newWord) { item in
+                NavigationStack {
+                    AddWord(word: item)
+                }
             }
         } detail : {
             Text("単語を選択")
@@ -56,6 +55,14 @@ struct WordList: View {
             for index in offsets {
                 modelContext.delete(words[index])
             }
+        }
+    }
+    
+    private func addWord() {
+        withAnimation {
+            let newItem = Word(english: "", japanese: "", example_english: "", example_japanese: "")
+            modelContext.insert(newItem)
+            newWord = newItem
         }
     }
 }

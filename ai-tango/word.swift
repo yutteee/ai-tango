@@ -10,10 +10,10 @@ import SwiftData
 
 @Model
 class Word {
-    let english: String
-    let japanese: String
-    let example_english: String
-    let example_japanese: String
+    var english: String
+    var japanese: String
+    var example_english: String
+    var example_japanese: String
     
     init(english: String, japanese: String, example_english: String, example_japanese: String) {
         self.english = english

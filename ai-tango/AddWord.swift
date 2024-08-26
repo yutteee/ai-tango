@@ -6,36 +6,43 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct AddWord: View {
-    @Environment(\.modelContext) var context
+    @Bindable var word : Word
     
-    @State private var english = ""
-    @State private var japanese = ""
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
     
+    init(word: Word) {
+        self.word = word
+    }
+
     var body: some View {
-        HStack{
-            Text("英語")
-            TextField("英語", text: $english)
+        Form {
+            TextField("英語", text: $word.english)
+            TextField("日本語", text: $word.japanese)
         }
-        .padding()
-        HStack {
-            Text("日本語")
-            TextField("日本語", text: $japanese)
-        }
-        .padding()
-        
-        Button(action: {
-            context.insert(Word(english: english, japanese: japanese, example_english: "", example_japanese: ""))
-        }) {
-            Label("単語を追加", systemImage: "plus")
-                .font(.headline)
+        .navigationTitle("単語を追加")
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Done") {
+                    dismiss()
+                }
+            }
+            
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") {
+                    modelContext.delete(word)
+                    dismiss()
+                }
+            }
         }
     }
 }
 
 #Preview {
-    AddWord()
-        .modelContainer(for: Word.self, inMemory: true)
+    NavigationStack {
+        AddWord(word: SampleData.shared.word)
+            .navigationBarTitleDisplayMode(.inline)
+    }
 }
