@@ -17,11 +17,13 @@ struct AddWord: View {
     @State private var isEnglishValid = true
     @State private var isJapaneseValid = true
     
+    @State private var isFormValid = false
+    @State private var isFormEmpty = true
+    
     @State private var showErrorAlert = false
     @State private var errorMessage = ""
     @State private var isLoading = false
 
-    
     init(word: Word) {
         self.word = word
     }
@@ -35,6 +37,7 @@ struct AddWord: View {
                 TextField("English", text: $word.english)
                     .onChange(of: word.english) { newValue in
                         isEnglishValid = isValidEnglish(newValue)
+                        isFormEmpty = word.english.isEmpty || word.japanese.isEmpty
                     }
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
@@ -49,6 +52,7 @@ struct AddWord: View {
                 TextField("日本語", text: $word.japanese)
                     .onChange(of: word.japanese) { newValue in
                         isJapaneseValid = isValidJapanese(newValue)
+                        isFormEmpty = word.english.isEmpty || word.japanese.isEmpty
                     }
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
@@ -62,24 +66,36 @@ struct AddWord: View {
                     .background(Color.clear)
                     .frame(maxWidth: .infinity, alignment: .center)) {}
             }
+            
+            if isFormValid && isFormEmpty {
+                Section(footer: Text("英語と日本語を入力してください。")
+                    .font(.body)
+                    .foregroundColor(.red)) {}
+                    .padding(.top, -24.0)
+                    
+            }
         }
         .navigationTitle("単語を追加")
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Done") {
-                    Task {
-                        do {
-                            isLoading = true
-                            try await fetchOpenAIResponse()
-                            dismiss()
-                        } catch {
-                            isLoading = false
-                            showErrorAlert = true
-                            errorMessage = "文章の生成に失敗しました。時間をおいて再度お試しいただくか、単語を変えてお試しください。 " + error.localizedDescription
+                    if !word.english.isEmpty && !word.japanese.isEmpty {
+                        Task {
+                            do {
+                                isLoading = true
+                                try await fetchOpenAIResponse()
+                                dismiss()
+                            } catch {
+                                isLoading = false
+                                showErrorAlert = true
+                                errorMessage = "文章の生成に失敗しました。時間をおいて再度お試しいただくか、単語を変えてお試しください。 " + error.localizedDescription
+                            }
                         }
+                    } else {
+                        isFormValid = true
                     }
                 }
-                .disabled(isLoading || !isEnglishValid || !isJapaneseValid)
+                .disabled(isLoading || !isEnglishValid || !isJapaneseValid || isFormValid && isFormEmpty)
             }
             
             

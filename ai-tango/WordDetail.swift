@@ -27,7 +27,7 @@ struct WordDetail: View {
                 Text("例文")
                     .foregroundColor(Color.gray)
                 
-                VStack(alignment: .leading, spacing: 8.0) {
+                VStack(alignment: .leading, spacing: 12.0) {
                     Text(word.example_english)
                         .font(.title2)
                     Text(word.example_japanese)
