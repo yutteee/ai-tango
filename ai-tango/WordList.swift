@@ -44,6 +44,7 @@ struct WordList: View {
                 NavigationStack {
                     AddWord(word: item)
                 }
+                .interactiveDismissDisabled()
             }
         } detail : {
             Text("単語を選択")
