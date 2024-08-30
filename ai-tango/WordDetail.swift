@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct WordDetail: View {
     var word : Word

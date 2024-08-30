@@ -14,36 +14,101 @@ struct AddWord: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
+    @State private var isEnglishValid = true
+    @State private var isJapaneseValid = true
+    
+    @State private var showErrorAlert = false
+    @State private var errorMessage = ""
+    @State private var isLoading = false
+
+    
     init(word: Word) {
         self.word = word
     }
     
     var body: some View {
         Form {
-            TextField("英語", text: $word.english)
-            TextField("日本語", text: $word.japanese)
+            Section(header: Text("英語").padding(0.0), footer: Text(!isValidEnglish(word.english) ? "アルファベットのみ入力可能です。" : "")
+                .font(.body)
+                .foregroundColor(.red)
+            ) {
+                TextField("English", text: $word.english)
+                    .onChange(of: word.english) { newValue in
+                        isEnglishValid = isValidEnglish(newValue)
+                    }
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                    .textContentType(.oneTimeCode)
+                    .keyboardType(.default)
+                    .foregroundColor(isEnglishValid ? .primary : .red)
+            }
+            Section(header: Text("日本語").padding(.top, -12), footer: Text(!isValidJapanese(word.japanese) ? "ひらがな、カタカナ、漢字のみ入力可能です。" : "")
+                .font(.body)
+                .foregroundColor(.red)
+            ) {
+                TextField("日本語", text: $word.japanese)
+                    .onChange(of: word.japanese) { newValue in
+                        isJapaneseValid = isValidJapanese(newValue)
+                    }
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                    .textContentType(.oneTimeCode)
+                    .keyboardType(.default)
+                    .foregroundColor(isJapaneseValid ? .primary : .red)
+            }
+            
+            if isLoading {
+                Section(footer: ProgressView()
+                    .background(Color.clear)
+                    .frame(maxWidth: .infinity, alignment: .center)) {}
+            }
         }
         .navigationTitle("単語を追加")
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Done") {
                     Task {
-                        await fetchOpenAIResponse()
+                        do {
+                            isLoading = true
+                            try await fetchOpenAIResponse()
+                            dismiss()
+                        } catch {
+                            isLoading = false
+                            showErrorAlert = true
+                            errorMessage = "文章の生成に失敗しました。時間をおいて再度お試しいただくか、単語を変えてお試しください。 " + error.localizedDescription
+                        }
                     }
-                    dismiss()
                 }
+                .disabled(isLoading || !isEnglishValid || !isJapaneseValid)
             }
+            
             
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {
                     modelContext.delete(word)
                     dismiss()
                 }
+                .disabled(isLoading)
             }
+        }
+        .alert(isPresented: $showErrorAlert) {
+            Alert(title: Text("エラー"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
         }
     }
     
-    private func fetchOpenAIResponse() async {
+    // 英語のバリデーション
+    func isValidEnglish(_ input: String) -> Bool {
+        let regex = "^[A-Za-z]*$"
+        return input.range(of: regex, options: .regularExpression) != nil
+    }
+
+    // 日本語のバリデーション
+    func isValidJapanese(_ input: String) -> Bool {
+        let regex = "^[\\p{Hiragana}\\p{Katakana}\\p{Han}]*$"
+        return input.range(of: regex, options: .regularExpression) != nil
+    }
+    
+    private func fetchOpenAIResponse() async throws {
         let openAIApiKey = APIKeyManager.shared.apiKey(for: "OPENAI_API_KEY")
         
         if let openAIApiKey = openAIApiKey {
@@ -69,10 +134,8 @@ struct AddWord: View {
                     }
                 }
             } catch {
-                print(error)
+                throw NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "APIリクエストに失敗しました: \(error.localizedDescription)"])
             }
-        } else {
-            print("APIキーが見つかりません")
         }
     }
 }
