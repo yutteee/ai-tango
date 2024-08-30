@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161C2BE42C7F28D300A01260 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 161C2BE32C7F28D300A01260 /* OpenAI */; };
+		161C2BE82C819DFE00A01260 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 161C2BE72C819DFE00A01260 /* .gitignore */; };
+		161C2BEA2C819E3C00A01260 /* APIKeyManager.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C2BE92C819E3C00A01260 /* APIKeyManager.swift .swift */; };
 		162DA6362C19EC22001DB984 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162DA6352C19EC22001DB984 /* SampleData.swift */; };
 		1678C66F2C1460F60096CD8A /* ai_tangoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C66E2C1460F60096CD8A /* ai_tangoApp.swift */; };
 		1678C6712C1460F60096CD8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1678C6702C1460F60096CD8A /* ContentView.swift */; };
@@ -20,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		161C2BE52C819C2300A01260 /* Config.xcconfig .xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Config.xcconfig .xcconfig"; sourceTree = "<group>"; };
+		161C2BE62C819CC100A01260 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		161C2BE72C819DFE00A01260 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		161C2BE92C819E3C00A01260 /* APIKeyManager.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIKeyManager.swift .swift"; sourceTree = "<group>"; };
 		162DA6352C19EC22001DB984 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		1678C66B2C1460F60096CD8A /* ai-tango.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ai-tango.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1678C66E2C1460F60096CD8A /* ai_tangoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ai_tangoApp.swift; sourceTree = "<group>"; };
@@ -38,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161C2BE42C7F28D300A01260 /* OpenAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +71,9 @@
 		1678C66D2C1460F60096CD8A /* ai-tango */ = {
 			isa = PBXGroup;
 			children = (
+				161C2BE62C819CC100A01260 /* Info.plist */,
+				161C2BE72C819DFE00A01260 /* .gitignore */,
+				161C2BE92C819E3C00A01260 /* APIKeyManager.swift .swift */,
 				1678C66E2C1460F60096CD8A /* ai_tangoApp.swift */,
 				1678C6702C1460F60096CD8A /* ContentView.swift */,
 				1678C67E2C1466930096CD8A /* word.swift */,
@@ -70,6 +81,7 @@
 				162DA6352C19EC22001DB984 /* SampleData.swift */,
 				1678C6822C149B5C0096CD8A /* WordList.swift */,
 				1678C6862C15D6FB0096CD8A /* AddWord.swift */,
+				161C2BE52C819C2300A01260 /* Config.xcconfig .xcconfig */,
 				1678C6842C149D5F0096CD8A /* WordDetail.swift */,
 				1678C6742C1460F70096CD8A /* Assets.xcassets */,
 				1678C6762C1460F70096CD8A /* Preview Content */,
@@ -101,6 +113,9 @@
 			dependencies = (
 			);
 			name = "ai-tango";
+			packageProductDependencies = (
+				161C2BE32C7F28D300A01260 /* OpenAI */,
+			);
 			productName = "ai-tango";
 			productReference = 1678C66B2C1460F60096CD8A /* ai-tango.app */;
 			productType = "com.apple.product-type.application";
@@ -129,6 +144,9 @@
 				Base,
 			);
 			mainGroup = 1678C6622C1460F60096CD8A;
+			packageReferences = (
+				161C2BE22C7F28D300A01260 /* XCRemoteSwiftPackageReference "OpenAI" */,
+			);
 			productRefGroup = 1678C66C2C1460F60096CD8A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -144,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1678C6782C1460F70096CD8A /* Preview Assets.xcassets in Resources */,
+				161C2BE82C819DFE00A01260 /* .gitignore in Resources */,
 				1678C6752C1460F70096CD8A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +178,7 @@
 				1678C6812C1468320096CD8A /* WordRow.swift in Sources */,
 				1678C6712C1460F60096CD8A /* ContentView.swift in Sources */,
 				1678C67F2C1466930096CD8A /* word.swift in Sources */,
+				161C2BEA2C819E3C00A01260 /* APIKeyManager.swift .swift in Sources */,
 				1678C6872C15D6FB0096CD8A /* AddWord.swift in Sources */,
 				1678C66F2C1460F60096CD8A /* ai_tangoApp.swift in Sources */,
 				162DA6362C19EC22001DB984 /* SampleData.swift in Sources */,
@@ -171,6 +191,7 @@
 /* Begin XCBuildConfiguration section */
 		1678C6792C1460F70096CD8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 161C2BE52C819C2300A01260 /* Config.xcconfig .xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -234,6 +255,7 @@
 		};
 		1678C67A2C1460F70096CD8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 161C2BE52C819C2300A01260 /* Config.xcconfig .xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -290,6 +312,7 @@
 		};
 		1678C67C2C1460F70096CD8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 161C2BE52C819C2300A01260 /* Config.xcconfig .xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -299,6 +322,7 @@
 				DEVELOPMENT_TEAM = M7J8ZCHKG6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ai-tango/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -319,6 +343,7 @@
 		};
 		1678C67D2C1460F70096CD8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 161C2BE52C819C2300A01260 /* Config.xcconfig .xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -328,6 +353,7 @@
 				DEVELOPMENT_TEAM = M7J8ZCHKG6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ai-tango/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -368,6 +394,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		161C2BE22C7F28D300A01260 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		161C2BE32C7F28D300A01260 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 161C2BE22C7F28D300A01260 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1678C6632C1460F60096CD8A /* Project object */;
 }
