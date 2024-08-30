@@ -38,8 +38,8 @@ struct WordList: View {
             Button(action: addWord) {
                 Label("単語を追加", systemImage: "plus")
                     .font(.headline)
+                    .frame(maxWidth: .infinity, maxHeight: 40.0)
             }
-            .padding(.top)
             .sheet(item: $newWord) { item in
                 NavigationStack {
                     AddWord(word: item)
