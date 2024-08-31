@@ -39,11 +39,9 @@ struct AddWord: View {
                         isEnglishValid = isValidEnglish(newValue)
                         isFormEmpty = word.english.isEmpty || word.japanese.isEmpty
                     }
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                    .textContentType(.oneTimeCode)
-                    .keyboardType(.default)
-                    .foregroundColor(isEnglishValid ? .primary : .red)
+                    .autocapitalization(.none) // 最初の文字を大文字にしない
+                    .keyboardType(.asciiCapable) // 英数字のみ
+                    .padding(.vertical, 6.0)
             }
             Section(header: Text("日本語").padding(.top, -12), footer: Text(!isValidJapanese(word.japanese) ? "ひらがな、カタカナ、漢字のみ入力可能です。" : "")
                 .font(.body)
@@ -54,11 +52,8 @@ struct AddWord: View {
                         isJapaneseValid = isValidJapanese(newValue)
                         isFormEmpty = word.english.isEmpty || word.japanese.isEmpty
                     }
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                    .textContentType(.oneTimeCode)
                     .keyboardType(.default)
-                    .foregroundColor(isJapaneseValid ? .primary : .red)
+                    .padding(.vertical, 6.0)
             }
             
             if isLoading {
@@ -84,6 +79,7 @@ struct AddWord: View {
                             do {
                                 isLoading = true
                                 try await fetchOpenAIResponse()
+                                modelContext.insert(word)
                                 dismiss()
                             } catch {
                                 isLoading = false
@@ -114,7 +110,8 @@ struct AddWord: View {
     
     // 英語のバリデーション
     func isValidEnglish(_ input: String) -> Bool {
-        let regex = "^[A-Za-z]*$"
+//      アルファベットと空白を許可する
+        let regex = "^[a-zA-Z ]*$"
         return input.range(of: regex, options: .regularExpression) != nil
     }
 

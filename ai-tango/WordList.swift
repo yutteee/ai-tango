@@ -13,20 +13,27 @@ struct WordList: View {
     @Query private var words: [Word]
     
     @State private var newWord: Word?
-    @State private var isShowSheet = false
-    
+    @State private var showingSheet = false
     
     var body: some View {
         NavigationSplitView {
-            List{
-                ForEach(words) { word in
-                    NavigationLink {
-                        WordDetail(word: word)
-                    } label: {
-                        WordRow(word: word)
+            Group {
+                if !words.isEmpty {
+                    List{
+                        ForEach(words) { word in
+                            NavigationLink {
+                                WordDetail(word: word)
+                            } label: {
+                                WordRow(word: word)
+                            }
+                        }
+                        .onDelete(perform: deleteItems)
+                    }
+                } else {
+                    ContentUnavailableView {
+                        Label("単語がありません", systemImage: "figure.core.training")
                     }
                 }
-                .onDelete(perform: deleteItems)
             }
             .navigationTitle("単語一覧")
             .toolbar {
@@ -62,7 +69,6 @@ struct WordList: View {
     private func addWord() {
         withAnimation {
             let newItem = Word(english: "", japanese: "", example_english: "", example_japanese: "")
-            modelContext.insert(newItem)
             newWord = newItem
         }
     }
@@ -71,4 +77,9 @@ struct WordList: View {
 #Preview {
     WordList()
         .modelContainer(SampleData.shared.modelContainer)
+}
+
+#Preview("Empty") {
+    WordList()
+        .modelContainer(for: Word.self)
 }
