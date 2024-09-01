@@ -128,7 +128,7 @@ struct AddWord: View {
             let openAI = OpenAI(apiToken: openAIApiKey)
             guard let systemMessage = ChatQuery.ChatCompletionMessageParam(role: .assistant, content: "あなたは与えられた英単語とその意味を基に、適切な例文を作成してください。出力は次の形式のJSONで行ってください。```{'example_english': 'She is quick to understand complex concepts.','example_japanese': '彼女は複雑な概念を理解するのが早い。'}```") else { return }
             guard let userMessage = ChatQuery.ChatCompletionMessageParam(role: .user, content: "\(word.english) \(word.japanese)") else { return }
-            let query = ChatQuery(messages: [systemMessage, userMessage], model: .gpt4_o, responseFormat: .jsonObject)
+            let query = ChatQuery(messages: [systemMessage, userMessage], model: .gpt3_5Turbo, responseFormat: .jsonObject)
             
             do {
                 let result = try await openAI.chats(query: query)
